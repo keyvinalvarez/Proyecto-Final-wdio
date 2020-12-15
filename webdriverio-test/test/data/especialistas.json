@@ -1,0 +1,19 @@
+[
+    {
+           "nombre": "Maria José Miranda",
+           "especialidad": "Ocupacional",
+           "provincia": "Alajuela",
+           "descripcion": "Tengo experiencia trabajando con niños que presentan dificultades en el procesamiento sensorial, y con adultos jóvenes con condiciones de salud mental.",
+           "correo": "mariamirandato2006@gmail.com",
+           "telefono": "+50685450733"
+    },
+    {
+        "nombre": "Maria José Miranda",
+        "especialidad": "Ocupacional",
+        "provincia": "Alajuela",
+        "descripcion": "Tengo experiencia trabajando con niños que presentan dificultades en el procesamiento sensorial, y con adultos jóvenes con condiciones de salud mental.",
+        "correo": "mariamirandato2006@gmail.com",
+        "telefono": "+50685450733"
+ }
+
+]

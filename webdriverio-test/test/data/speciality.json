@@ -1,0 +1,16 @@
+[
+    {
+        "especialty":"FÍSICA", 
+        "url":"?sp=phisical"
+    },
+    {
+         "especialty": "LENGUAJE",
+        "url":"?sp=language"
+    },
+    {
+        "especialty":"OCUPACIONAL",
+        "url":"?sp=ocupational"
+
+    }
+
+]
