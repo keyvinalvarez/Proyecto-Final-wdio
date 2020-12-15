@@ -3,7 +3,6 @@ const ResultsPage = require("../pageobjects/results.page");
 const { getUrlBySpeciality } = require("../helper/parser.helper");
 const speciality = require("../data/speciality.json");
 const especialistas = require("../data/especialistas.json");
-const { search } = require("../pageobjects/home.page");
 
 describe("Search Tests", () => {
   beforeEach(() => {
