@@ -1,6 +1,6 @@
-function getUrlBySpeciality(json, value, speciality) {
-    let data = json.find(item => item.especialty === speciality);
-    return data[value];
+function getUrlBySpeciality(json, speciality) {
+    let data = json.find(item => item.specialty === speciality);
+    return data["url"];
 }
 
 module.exports = {

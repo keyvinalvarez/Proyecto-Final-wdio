@@ -9,21 +9,26 @@ describe("Search Tests", () => {
     ResultsPage.open();
   });
 
-  //   it("Validate that selecting a different specility tab changes the url respectivly", () =>{
-  //     let url = browser.getUrl();
-  //     let tabs = ResultsPage.specialitiesTab;
-  //     for(item of tabs){
-  //         item.click();
-  //         //Search that the item match the json
-  //         expect(browser).toHaveUrl(url.concat(getUrlBySpeciality(speciality, item.getText())));
-  //     }
-  //   });
-
   it("Validate that selecting a different specility tab changes the url respectivly", () => {
-    ResultsPage.search("maria");
-    //validate the name of the professional
-    expect(ResultsPage.profesionalName).toHaveTextContaining("Maria");
-    //validate that the searched professional is displayed on the search bar
-    expect(ResultsPage.searchField).toHaveValue("maria");
+    let url = browser.getUrl();
+    let tabs = ResultsPage.specialitiesTab;
+    for (item of tabs) {
+      item.click();
+      //Search that the item match the json
+      expect(browser).toHaveUrl(
+        url.concat(getUrlBySpeciality(speciality, item.getText()))
+      );
+    }
   });
+
+  for (especialist of especialistas) {
+    it("Validate that selecting a different specility tab changes the url respectivly", () => {
+      ResultsPage.search(especialist.searchKey);
+      //validate the name of the professional
+      expect(ResultsPage.profesionalName).toHaveText(especialist.name);
+      //validate that the searched professional is displayed on the search bar
+      expect(ResultsPage.searchField).toHaveValue(especialist.searchKey);
+
+    });
+  }
 });

@@ -1,14 +1,14 @@
 [
     {
-        "especialty":"FÍSICA", 
+        "specialty":"FÍSICA", 
         "url":"?sp=phisical"
     },
     {
-         "especialty": "LENGUAJE",
+        "specialty": "LENGUAJE",
         "url":"?sp=language"
     },
     {
-        "especialty":"OCUPACIONAL",
+        "specialty":"OCUPACIONAL",
         "url":"?sp=ocupational"
 
     }

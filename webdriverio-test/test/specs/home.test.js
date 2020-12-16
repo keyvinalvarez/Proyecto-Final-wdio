@@ -1,9 +1,9 @@
 const { config } = require("../../wdio.conf");
 const HomePage = require("../pageobjects/home.page");
 const ResultsPage = require("../pageobjects/results.page");
+const specialists = require("../data/especialistas.json");
 
 describe("Home Page Search Field Tests", () => {
-
   beforeEach(() => {
     HomePage.open();
   });
@@ -23,7 +23,7 @@ describe("Home Page Search Field Tests", () => {
     expect(browser).toHaveUrl(url);
   });
 
-  it("Validate that when clicking an especiality the search bar is focused and the placeholder is changed", () => {
+  it("Validate that when clicking an speciality the search bar is focused and the placeholder is changed", () => {
     HomePage.languageRadioButton.click();
     //validate that the search field is focused
     expect(HomePage.searchField).toBeFocused();
@@ -38,12 +38,13 @@ describe("Home Page Search Field Tests", () => {
     );
   });
 
-  // it('Validate that searching for an specialist the user is redirected the search page and the specialist is the first displayed', () => {
-  //     //HomePage.open();
-  //     let specialistName = 'Maria'
-  //     HomePage.search(specialistName);
-  //     expect(browser).toHaveUrlContaining(ResultsPage.pageUrl.concat(specialistName));
-  //     expect(ResultsPage.profesionalName).toHaveTextContaining(specialistName);
-
-  // });
+  specialists.forEach((element) => {
+    it(`Validate that searching for the specialist ${element.name}, the user is redirected the search page and the specialist is the first displayed`, () => {
+      HomePage.search(element.searchKey);
+      expect(browser).toHaveUrlContaining(
+        ResultsPage.pageUrl.concat(element.searchKey)
+      );
+      expect(ResultsPage.profesionalName).toHaveTextContaining(element.name);
+    });
+  });
 });
