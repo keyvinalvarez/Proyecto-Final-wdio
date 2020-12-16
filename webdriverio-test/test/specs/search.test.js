@@ -9,7 +9,7 @@ describe("Search Tests", () => {
     ResultsPage.open();
   });
 
-  it("Validate that selecting a different specility tab changes the url respectivly", () => {
+  it("2.a Validate that selecting a different specility tab changes the url respectivly", () => {
     let url = browser.getUrl();
     let tabs = ResultsPage.specialitiesTab;
     for (item of tabs) {
@@ -21,14 +21,30 @@ describe("Search Tests", () => {
     }
   });
 
-  for (especialist of especialistas) {
-    it("Validate that selecting a different specility tab changes the url respectivly", () => {
-      ResultsPage.search(especialist.searchKey);
-      //validate the name of the professional
-      expect(ResultsPage.profesionalName).toHaveText(especialist.name);
-      //validate that the searched professional is displayed on the search bar
-      expect(ResultsPage.searchField).toHaveValue(especialist.searchKey);
+  especialistas.forEach((element) => {
+    it(`2.b Validate that searching for ${element.searchKey} in the search page the page is reloaded and the first result is ${element.name}`, () => {
 
+      ResultsPage.search(element.searchKey);
+      //Validate that the page is reloaded with the search
+      expect(browser).toHaveUrlContaining('?q='.concat(element.searchKey));
+      //validate the name of the professional
+      expect(ResultsPage.profesionalName).toHaveText(element.name);
+      //validate that the searched professional is displayed on the search bar
+      expect(ResultsPage.searchField).toHaveValue(element.searchKey);
     });
-  }
+  });
+
+  it('2.c Validate that the map is displayed when the show map button is clicked and hidden when the list view is clicked', () => {
+
+    ResultsPage.search(especialistas[0].searchKey);
+    //Click the Map List button
+    ResultsPage.mapList.click();
+    //Validate that the Map is not displayed
+    expect(ResultsPage.map).toHaveAttr('class', 'd-none');
+    expect(ResultsPage.map).isDisplayed();
+    //Click the Map View button
+    ResultsPage.mapView.click();
+    //Validate that the Map is displayed
+    expect(ResultsPage.map).toHaveAttr('class', 'col-lg-5');
+  });
 });

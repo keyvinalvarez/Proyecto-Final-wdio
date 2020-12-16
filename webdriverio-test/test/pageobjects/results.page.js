@@ -11,6 +11,16 @@ class ResultsPage extends Page {
     return $$(".switch-field >a");
   }
 
+  get mapList() {
+    return $(".icon-th-list").parentElement();
+  }
+  get mapView() {
+    return $(".icon-map-1").parentElement();
+  }
+  get map() {
+    return $("#sidebar");
+  }
+
   //get specialityPhysic () {return $('.search_bar_list > [value=Buscar]')}
   get profesionalName() {
     return $("h3");

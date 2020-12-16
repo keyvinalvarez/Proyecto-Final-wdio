@@ -8,7 +8,7 @@ describe("Home Page Search Field Tests", () => {
     HomePage.open();
   });
 
-  it("Searching for an empty user will not redirect to other page", () => {
+  it("1.a Searching for an empty user will not redirect to other page", () => {
     let url = browser.getUrl();
 
     HomePage.search("");
@@ -23,7 +23,7 @@ describe("Home Page Search Field Tests", () => {
     expect(browser).toHaveUrl(url);
   });
 
-  it("Validate that when clicking an speciality the search bar is focused and the placeholder is changed", () => {
+  it("1.b Validate that when clicking an speciality the search bar is focused and the placeholder is changed", () => {
     HomePage.languageRadioButton.click();
     //validate that the search field is focused
     expect(HomePage.searchField).toBeFocused();
@@ -39,12 +39,12 @@ describe("Home Page Search Field Tests", () => {
   });
 
   specialists.forEach((element) => {
-    it(`Validate that searching for the specialist ${element.name}, the user is redirected the search page and the specialist is the first displayed`, () => {
+    it(`1.c Validate that searching ${element.searchKey} the user is redirected the search page and the specialist ${element.name} is the first displayed`, () => {
       HomePage.search(element.searchKey);
       expect(browser).toHaveUrlContaining(
         ResultsPage.pageUrl.concat(element.searchKey)
       );
-      expect(ResultsPage.profesionalName).toHaveTextContaining(element.name);
+      expect(ResultsPage.profesionalName).toHaveText(element.name);
     });
   });
 });
