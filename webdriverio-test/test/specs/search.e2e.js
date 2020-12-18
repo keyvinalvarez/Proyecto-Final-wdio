@@ -1,8 +1,8 @@
 const { config } = require("../../wdio.conf");
 const ResultsPage = require("../pageobjects/results.page");
 const { getUrlBySpeciality } = require("../helper/parser.helper");
-const speciality = require("../data/speciality.json");
-const especialistas = require("../data/especialistas.json");
+const specialities = require("../data/specialities.json");
+const specialists = require("../data/specialists.json");
 
 describe("Search Tests", () => {
   beforeEach(() => {
@@ -16,35 +16,33 @@ describe("Search Tests", () => {
       item.click();
       //Search that the item match the json
       expect(browser).toHaveUrl(
-        url.concat(getUrlBySpeciality(speciality, item.getText()))
+        url.concat(getUrlBySpeciality(specialities, item.getText()))
       );
     }
+    browser.reloadSession();
   });
 
-  especialistas.forEach((element) => {
+  specialists.forEach((element) => {
     it(`2.b Validate that searching for ${element.searchKey} in the search page the page is reloaded and the first result is ${element.name}`, () => {
-
       ResultsPage.search(element.searchKey);
       //Validate that the page is reloaded with the search
-      expect(browser).toHaveUrlContaining('?q='.concat(element.searchKey));
-      //validate the name of the professional
+      expect(browser).toHaveUrlContaining("?q=".concat(element.searchKey));
+      //validate the name of the professional is the first option displayed
       expect(ResultsPage.profesionalName).toHaveText(element.name);
       //validate that the searched professional is displayed on the search bar
       expect(ResultsPage.searchField).toHaveValue(element.searchKey);
     });
   });
 
-  it('2.c Validate that the map is displayed when the show map button is clicked and hidden when the list view is clicked', () => {
-
-    ResultsPage.search(especialistas[0].searchKey);
+  it("2.c Validate that the map is displayed when the show map button is clicked and hidden when the list view is clicked", () => {
+    ResultsPage.search(specialists[0].searchKey);
     //Click the Map List button
-    ResultsPage.mapList.click();
+    ResultsPage.selectListView();
     //Validate that the Map is not displayed
-    expect(ResultsPage.map).toHaveAttr('class', 'd-none');
-    expect(ResultsPage.map).isDisplayed();
+    expect(ResultsPage.map).not.toBeDisplayed();
     //Click the Map View button
-    ResultsPage.mapView.click();
+    ResultsPage.selectMapView();
     //Validate that the Map is displayed
-    expect(ResultsPage.map).toHaveAttr('class', 'col-lg-5');
+    expect(ResultsPage.map).toBeDisplayed();
   });
 });

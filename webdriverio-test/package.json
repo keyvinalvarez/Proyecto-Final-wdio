@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx wdio"
   },
   "keywords": [],
   "author": "",
@@ -16,9 +16,11 @@
     "@wdio/spec-reporter": "^6.8.1",
     "@wdio/sync": "^6.10.4",
     "chromedriver": "^87.0.2",
-    "wdio-chromedriver-service": "^6.0.4"
+    "wdio-chromedriver-service": "^6.0.4",
+    "wdio-intercept-service": "^4.1.2"
   },
   "dependencies": {
-    "file-system": "^2.2.2"
+    "file-system": "^2.2.2",
+    "save-dev": "0.0.1-security"
   }
 }

@@ -1,7 +1,7 @@
 const { config } = require("../../wdio.conf");
 const HomePage = require("../pageobjects/home.page");
 const ResultsPage = require("../pageobjects/results.page");
-const specialists = require("../data/especialistas.json");
+const specialists = require("../data/specialists.json");
 
 describe("Home Page Search Field Tests", () => {
   beforeEach(() => {
@@ -10,7 +10,6 @@ describe("Home Page Search Field Tests", () => {
 
   it("1.a Searching for an empty user will not redirect to other page", () => {
     let url = browser.getUrl();
-
     HomePage.search("");
     //overlay focus is not displayed
     expect(HomePage.overlay).toHaveAttr("class", "overlay");
@@ -24,7 +23,7 @@ describe("Home Page Search Field Tests", () => {
   });
 
   it("1.b Validate that when clicking an speciality the search bar is focused and the placeholder is changed", () => {
-    HomePage.languageRadioButton.click();
+    HomePage.selectLanguageTab();
     //validate that the search field is focused
     expect(HomePage.searchField).toBeFocused();
     expect(HomePage.searchField.parentElement()).toHaveAttrContaining(

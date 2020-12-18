@@ -27,6 +27,21 @@ class HomePage extends Page {
     console.log("Buscar clicked");
   }
 
+  selectPhisicalTab() {
+    this.phisicalRadioButton.click();
+    console.log("Fisica tab clicked");
+  }
+
+  selectLanguageTab() {
+    this.languageRadioButton.click();
+    console.log("Lenguaje tab clicked");
+  }
+
+  selectOcupationalTab() {
+    this.ocupationalRadioButton.click();
+    console.log("Ocupacional tab clicked");
+  }
+
   open() {
     return super.open("");
   }

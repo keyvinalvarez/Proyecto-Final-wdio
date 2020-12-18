@@ -11,27 +11,45 @@ class ResultsPage extends Page {
     return $$(".switch-field >a");
   }
 
-  get mapList() {
+  get mapListButton() {
     return $(".icon-th-list").parentElement();
   }
-  get mapView() {
+  get mapViewButton() {
     return $(".icon-map-1").parentElement();
   }
   get map() {
-    return $("#sidebar");
+    return $("#map");
   }
 
-  //get specialityPhysic () {return $('.search_bar_list > [value=Buscar]')}
   get profesionalName() {
     return $("h3");
   }
 
+  get completeProfileLink() {
+    return $(".btn_listing");
+  }
+
   pageUrl = "search?sp=all&q=";
 
-  search(name) {
-    this.searchField.setValue(name);
+  search(searchKey) {
+    this.searchField.setValue(searchKey);
     this.searchButton.click();
     console.log("Buscar clicked");
+  }
+
+  selectListView() {
+    this.mapListButton.click();
+    console.log("List View button clicked");
+  }
+
+  selectMapView() {
+    this.mapViewButton.click();
+    console.log("Map View button clicked");
+  }
+
+  goToSpecialistProfile() {
+    this.completeProfileLink.click();
+    console.log("Go to Specialist Profile page");
   }
 
   open() {
