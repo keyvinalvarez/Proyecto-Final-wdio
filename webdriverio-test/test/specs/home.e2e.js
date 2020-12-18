@@ -1,4 +1,3 @@
-const { config } = require("../../wdio.conf");
 const HomePage = require("../pageobjects/home.page");
 const ResultsPage = require("../pageobjects/results.page");
 const specialists = require("../data/specialists.json");

@@ -1,4 +1,3 @@
-const { config } = require("../../wdio.conf");
 const ResultsPage = require("../pageobjects/results.page");
 const { getWebServiceValidationFromHash } = require("../helper/request.helper");
 const specialists = require("../data/specialists.json");

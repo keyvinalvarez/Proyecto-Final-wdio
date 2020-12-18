@@ -1,4 +1,3 @@
-const { config } = require("../../wdio.conf");
 const ResultsPage = require("../pageobjects/results.page");
 const { getUrlBySpeciality } = require("../helper/parser.helper");
 const specialities = require("../data/specialities.json");
